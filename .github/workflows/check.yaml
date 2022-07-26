@@ -1,0 +1,39 @@
+name: Check Rust codes
+on:
+  pull_request:
+    paths:
+      - "**.rs"
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: true
+      - name: Run cargo clippy
+        run: cargo clippy --bins --tests --examples --all -- -D warnings
+  format:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          submodules: true
+      - name: Format codes
+        run: cargo fmt
+      - name: Commit, add and push codes
+        run: |
+          if git diff --exit-code --quiet; then
+            exit 0
+          fi
+
+          git config user.name 'github-actions'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add --all
+          git commit -m "Run Rustfmt"
+          git push origin @
