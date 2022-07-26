@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cargo clippy --bins --tests --examples --all -- -D warnings
+cargo fmt --check
