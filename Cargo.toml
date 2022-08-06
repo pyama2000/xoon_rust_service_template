@@ -8,7 +8,6 @@ externalinterface = { path = "internal/externalinterface" }
 service = { path = "internal/interfaceadapter/service" }
 repository = { path = "internal/interfaceadapter/repository" }
 usecase = { path = "internal/usecase" }
-tokio = { version = "1.0", features = ["full"] }
 
 [workspace]
 members = [
