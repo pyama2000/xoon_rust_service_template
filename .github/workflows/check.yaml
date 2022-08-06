@@ -1,8 +1,5 @@
 name: Check Rust codes
-on:
-  pull_request:
-    paths:
-      - "**.rs"
+on: pull_request
 jobs:
   lint:
     runs-on: ubuntu-latest
