@@ -1,8 +1,14 @@
-# ***FIXME*** Service name
-
-## Prerequisites
+# Service name
 
 ***FIXME***
+
+- README.md
+  - Top level heading
+  - Prerequisites
+- Cargo.toml
+  - package.name
+
+## Prerequisites
 
 > **Note**
 > - Rust 1.62
