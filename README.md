@@ -16,6 +16,16 @@ environment variables:
 | WORKLOAD_IDENTITY_POOL_ID | GCP Workload Identity pool id |
 
 ```shell
+#!/usr/bin/env bash
+
+set -eux
+
+PROJECT_ID=
+SERVICE_ACCOUNT_NAME=
+PROVIDER_NAME=
+WORKLOAD_IDENTITY_POOL_NAME=
+REPOSITORY_NAME=
+
 # Create serviceaccount
 gcloud iam service-accounts create "$SERVICE_ACCOUNT_NAME" \
     --project "$PROJECT_ID"
@@ -30,11 +40,10 @@ gcloud iam workload-identity-pools providers create-oidc "$PROVIDER_NAME" \
     --issuer-uri="https://token.actions.githubusercontent.com"
 
 # Describe workload identity pool id
-gcloud iam workload-identity-pools providers describe "$PROVIDER_NAME" \
+WORKLOAD_IDENTITY_POOL_ID=$(gcloud iam workload-identity-pools describe "$WORKLOAD_IDENTITY_POOL_NAME" \
     --project "$PROJECT_ID" \
     --location global \
-    --workload-identity-pool "$WORKLOAD_IDENTITY_POOL_NAME" \
-    --format="value(name)"
+    --format="value(name)")
 
 # Add role to service account
 gcloud iam service-accounts add-iam-policy-binding "${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
