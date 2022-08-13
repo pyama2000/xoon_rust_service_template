@@ -25,7 +25,7 @@ name = "usecase"
 version = "0.1.0"
 
 [[package]]
-name = "xoon_rust_service_template"
+name = "xoon_service_automation"
 version = "0.1.0"
 dependencies = [
  "externalinterface",

@@ -1,5 +1,5 @@
 [package]
-name = "xoon_rust_service_template"
+name = "xoon_service_automation"
 version = "0.1.0"
 edition = "2021"
 
