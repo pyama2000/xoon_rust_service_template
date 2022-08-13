@@ -99,6 +99,10 @@ echo "GCP_SERVICE_NAME=${github_repository_name}"
   - Prerequisites
 - Cargo.toml
   - package.name
+- build/docker/Dockerfile
+  - Edit TODO and FIXME
+    - (TODO) If need, install protoc
+    - (FIXME) Rename file name
 
 ## Prerequisites
 
