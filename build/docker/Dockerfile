@@ -1,4 +1,4 @@
-FROM rust:1.63.0 as builder
+FROM rust:1.64.0 as builder
 WORKDIR /app
 COPY . /app
 # TODO: If need, install protobuf-compiler(protoc)
